@@ -1,12 +1,55 @@
 import random, json
+score = 0
 
 question1 = json.loads(open('question1.json').read())
 question2 = json.loads(open('question2.json').read())
 question3 = json.loads(open('question3.json').read())
 question4 = json.loads(open('question4.json').read())
 question5 = json.loads(open('question5.json').read())
+answer1 = json.loads(open(answers/answer1.json).read())
+answer2 = json.loads(open(answers/answer2.json).read())
+answer3 = json.loads(open(answers/answer3.json).read())
+answer4 = json.loads(open(answers/answer4.json).read())
+answer5 = json.loads(open(answers/answer5.json).read())
 
-def askQuestion():
+def askQuestion1():
+    global score, answer1
+    print(question1)
+    answer = input("What is the answer?\n")
+    if answer == answer1:
+        print("Correct!\n")
+        score += 1
+    else:
+        print("Incorrect!\n")
+
+def askReady():
+    ready = input("Are you ready? (Yes/No/Change Question (C)\n")
+    if ready == "Yes":
+        askQuestion1()
+    elif ready == "No":
+        quit()
+    elif ready == "C":
+        changeQuestion()
+    else:
+        print("Invalid Selecion\n")
+        askReady()
+
+
+def changeQuestion():
+    questionNum = input("What question would you like to change?\n")
+    if questionNum == 1:
+        newQuestion1()
+    elif questionNum == 2:
+        newQuestion2()
+    elif questionNum == 3:
+        newQuestion3()
+    elif questionNum == 4:
+        newQuestion4()
+    elif questionNum == 5:
+        newQuestion5()
+    else:
+        print("Invalid Selection")
+        changeQuestion()
 
 
 def newQuestion5():
